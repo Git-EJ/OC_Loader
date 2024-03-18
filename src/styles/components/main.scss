@@ -1,0 +1,43 @@
+.main {
+  
+  &_wrapper {
+    @include flex_center_row;
+    height: 100vh;
+    width:fit-content;
+    transform: translateX(33%); // TODO laptop screen
+    background-image: url("/assets/img/custom_neon_pattern.svg");
+    background-repeat: repeat;
+    white-space: nowrap;
+  }
+
+  &_card {
+
+    &_container {
+      @include flex_center_column;
+      min-width: 550px;
+      height: 70%;
+      padding-top: 30px;
+      margin: 0 5rem;
+      box-shadow: 0 0 1rem 0.5rem #161b2234;
+      background: #fff;
+    }
+
+    &_content {
+      @include flex_center;
+      width: calc(100% - 60px); // 30px padding-top * 2
+      height: 80%;
+      background: black;
+    }
+
+    &_text {
+      @include flex_center_row;
+      justify-content: space-between;
+      width: calc(100% - 40px);
+      height: 20%;
+      padding-top: 40px;
+      font-family: 'AlexBrush-Regular', sans-serif;
+      font-size: clamp(1.5rem, 5vw, 4rem);
+      color: black;
+    }
+  }
+}

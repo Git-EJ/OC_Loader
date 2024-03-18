@@ -5,8 +5,8 @@
 @import './base/_reset.scss';
 @import './base/_all.scss';
 
-
-@import './app.scss';
+@import './components/header.scss';
+@import './components/main.scss';
 @import './loaders/ohMyFood/ohmyfood.scss';
 @import './loaders/kasa/kasa.scss';
 @import './loaders/sportsee/sportsee.scss';
