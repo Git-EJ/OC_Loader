@@ -1,0 +1,58 @@
+$hrnet_secondary_linear-gradient: linear-gradient(to right, #1494B9, #0E3C55);
+
+@mixin hrnet_gradient_text($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes ellipsisDots {
+  0% {transform: translateY(0) scale(1)}
+  50% {transform: translateY(-20px) scale(2)}
+  100% {transform: translateY(0) scale(1)}
+}
+
+
+
+.loading_dots {
+
+  @include flex_center;
+  align-items: flex-end;
+  flex-direction: row !important;
+  padding: 1rem;
+  
+  & p {
+    width:fit-content;
+    height: fit-content;
+    margin-right: 0.5rem;
+    font-family: 'Tektur_Bold', sans-serif;
+    font-size: 3rem;
+    @include hrnet_gradient_text($hrnet_secondary_linear-gradient);
+  }
+  
+  & span {
+    width: fit-content;
+    height: 100%;
+    animation: ellipsisDots 1.5s ease infinite;
+    margin-right:0.2rem;
+    margin-bottom: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.3rem;
+    @include hrnet_gradient_text($hrnet_secondary_linear-gradient);
+  }
+
+  >span:nth-child(2) {
+    animation-delay: 0s;
+  }
+  
+  >span:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  >span:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+}
+
+

@@ -1,0 +1,134 @@
+$primary_color: #9356DC;
+$secondary_color: #FF79DA;
+$font_logo: 'Shrikhand', sans-serif;
+$hover_cubic_bezier: transform 0.5s cubic-bezier(0.2, 0.5, 0.3, 2);
+
+@mixin loader_animation_center {
+  animation: loader_center 3s infinite linear;
+
+  @keyframes loader_center {
+
+      0% {
+          transform: rotateZ(0deg);
+      }
+
+      100% {
+          transform: rotateZ(360deg);
+      }
+  }
+}
+
+@mixin loader_text_and_icon {
+  animation: loader_text_and_icon 5s infinite linear;
+
+  @keyframes loader_text_and_icon {
+
+      0% {
+          transform: rotateZ(0deg);
+      }
+
+      25% {
+          transform: rotateZ(-10deg);
+      }
+
+      75% {
+          transform: rotateZ(10deg);
+      }
+
+      100% {
+          transform: rotateZ(0deg);
+
+      }
+  }
+}
+
+@mixin loader_animation_text { //effect of appearing text coloring in the form of back and forth
+  background: linear-gradient($secondary_color 0%, $primary_color 20%); // % used to define the positions of colors at the start of the animation (bg is $primary); 
+  background-size: 100% 200%; 
+  animation: loader_text 1.5s infinite linear;
+
+  @keyframes loader_text {
+
+      0% {
+          background-position: 0 -100%; // H V  The initial position is relative to the position layer defined by bg-position
+      }
+
+      100% {
+          background-position: 0 100%;
+      }
+  }
+}
+
+
+
+
+.loader {
+
+  &_wrapper {
+    @include flex_center;
+  }
+
+  &_container {
+    @include flex_center;
+    width: fit-content;
+    height: auto;
+    margin: 0.8rem;
+  }
+
+
+  &_center {
+
+    
+    &_out {
+      @include flex_center;
+      @include loader_animation_center;
+      position: relative;
+      width: 22.5vw;
+      height: 22.5vw;
+      max-width: 163px;
+      max-height: 163px;
+      border-radius: 50%;
+      box-shadow: .25vw .25vw .15vw rgba($secondary_color, 0.705),
+                  .25vw .25vw .25vw .25vw rgba($primary_color, 0.705);
+    }
+
+    &_in {
+      @include flex_center;
+      position: absolute;
+      width: 35vw;
+      height: 35vw;
+      max-width: 250px;
+      max-height: 250px;;
+      border-radius: 50%;
+      box-shadow: inset 0px 0px 2.5vw 1.25vw rgba($primary_color, 0.267);
+    }
+  }
+
+
+
+  &_text_and_icon_container {
+    @include loader_text_and_icon;
+    text-align: center;
+
+    & > svg  {
+      width: clamp(3%, 5vw, 8.5%);
+      height:auto;
+      & > path{
+        fill: $primary_color;
+      }
+    }
+  }
+
+  &_text {
+    @include flex_center_column;
+    @include loader_animation_text;
+    width: 100%;
+    height: fit-content;
+    padding: 0 1rem;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: $font_logo;
+    font-size: clamp(.8rem, 8vw, 3.5rem);
+    color: transparent;
+  }
+}

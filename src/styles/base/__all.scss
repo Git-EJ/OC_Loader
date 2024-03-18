@@ -1,0 +1,13 @@
+html,
+body {
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {display: none}
+  background: black;
+}
+
+#root {
+  @include flex_center;
+}

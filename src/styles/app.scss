@@ -1,0 +1,118 @@
+.app{
+
+  &_header {
+    @include flex_center;
+    width: 25%;
+    min-width: 255px;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    background: $bg_dark;
+    z-index: 1000;
+
+    &_text {
+      display: inline-block;
+      padding: 2rem;
+
+      writing-mode: horizontal-tb;
+      text-orientation: upright;
+
+      font-family: 'TiltNeon-Regular', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      color: black;
+
+
+      &_center {
+        // animation: flickerEffect 2s infinite;
+        text-shadow: 
+        0 0 5px $tertiary-color,        
+        0 0 10px $tertiary-color,
+        0 0 20px $tertiary-color,
+        0 0 40px $tertiary-color,
+        0 0 60px $tertiary-color,
+      }
+
+      &_left {
+        color: $primary-color;
+        text-shadow:
+        0 0 5px $primary-color,
+        0 0 10px $primary-color,
+        0 0 20px $primary-color,
+        0 0 40px $primary-color,
+        0 0 60px $primary-color; 
+      }
+
+      &_right {
+        color: $secondary-color;
+        text-shadow:
+        0 0 5px $secondary-color,
+        0 0 10px $secondary-color, 
+        0 0 20px $secondary-color,
+        0 0 40px $secondary-color,
+        0 0 60px $secondary-color; 
+      }
+    }
+  }
+
+  &_main {
+  
+    &_wrapper {
+      @include flex_center_row;
+      height: 100vh;
+      width:fit-content;
+      transform: translateX(33%);  ///why not 25%?
+      background-image: url("/assets/img/custom_neon_pattern.svg");
+      background-repeat: repeat;
+      white-space: nowrap;
+    }
+
+    &_card {
+
+      &_container {
+        @include flex_center_column;
+        min-width: 550px;
+        height: 70%;
+        padding-top: 30px;
+        margin: 0 5rem;
+        box-shadow: 0 0 1rem 0.5rem #161b2234;
+        background: #fff;
+      }
+
+      &_content {
+        @include flex_center;
+        width: calc(100% - 60px); // (20px padding left and right
+        height: 80%;
+        background: black;
+      }
+
+      &_text {
+        @include flex_center_row;
+        justify-content: space-between;
+        width: calc(100% - 40px);
+        height: 20%;
+        padding-top: 40px;
+        font-family: 'AlexBrush-Regular', sans-serif;
+        font-size: clamp(1.5rem, 5vw, 4rem);
+        color: black;
+      }
+    }
+  }
+}
+
+.flicker {
+  animation: flickerEffect 2s infinite;
+}
+
+
+@keyframes flickerEffect {
+  78% { opacity: 1 }
+  79% { opacity: 0 }
+  81% { opacity: 1 }
+  82% { opacity: 0 }
+  83% { opacity: 1 }
+  92% { opacity: 0 }
+  92.5% { opacity: 1}
+}
+
+
