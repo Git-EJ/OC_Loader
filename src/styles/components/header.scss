@@ -14,10 +14,8 @@
 
 
 .header {
-  
   @include flex_center;
-  width: 25%;
-  min-width: 255px;
+  width: $header-width;
   height: 100vh;
   position: fixed;
   top:0;

@@ -1,0 +1,101 @@
+$width: 100px;
+$height: $width/2;
+$pacman-color: red;
+$pacman-eat-time: 0.4s;
+$pacman-translate-time: 5s;
+$letters-color: #fff;
+
+
+@mixin use_animation($name, $time) {
+  animation: $name $time linear infinite;
+}
+
+@mixin flex_center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// Loop for the letters changing color when pacman eat them
+@for $i from 1 through 7 {
+  .pacman_letter:nth-child(#{$i}) {
+    @include use_animation(changeColor, $pacman-translate-time);
+    animation-delay: ($i - 1) * 0.4s;
+  }
+}
+
+// Pacman open mouth
+@keyframes pacman-up {
+  0%, 100% { transform: rotate(0) } 
+  50% { transform: rotate(-30deg) }
+}
+
+// Pacman close mouth
+@keyframes pacman-down {
+  0%, 100% { transform: rotate(0) } 
+  50% { transform: rotate(30deg) }
+}
+
+// Pacman move to the right
+@keyframes pacman-translate {
+  0% { transform: translateX(-250px) } 
+  100% { transform: translateX(440px) }
+}
+
+// Letters change color 
+@keyframes changeColor {
+  0%, 30% { color: $letters-color; }
+  31%, 89% { color: $pacman-color; }
+  90%, 100% { color: $letters-color; }
+}
+
+
+
+.pacman {
+
+  &_container {
+    @include flex_center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  // Pacman mate
+  &_m8 {
+    @include flex_center;
+    @include use_animation(pacman-translate, $pacman-translate-time);
+
+    &:before, 
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: $width;
+      height: $height;
+      margin-left: - $width/2;
+      margin-top: - $height;
+      border-radius: $height $height 0 0;
+      background: $pacman-color;
+      @include use_animation(pacman-up, $pacman-eat-time);
+    }
+
+    &:after {
+      margin-top: 0px;
+      border-radius: 0 0 $height $height;
+      @include use_animation(pacman-down, $pacman-eat-time);
+    }
+  }
+
+  // Letters that pacman eats
+  &_letters{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: $letters-color;
+    letter-spacing: 2em;
+  }
+} 
+
+

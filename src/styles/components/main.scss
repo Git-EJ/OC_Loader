@@ -4,7 +4,7 @@
     @include flex_center_row;
     height: 100vh;
     width:fit-content;
-    transform: translateX(33%); // TODO laptop screen
+    transform: translateX($header-width); 
     background-image: url("/assets/img/custom_neon_pattern.svg");
     background-repeat: repeat;
     white-space: nowrap;
@@ -17,9 +17,17 @@
       min-width: 550px;
       height: 70%;
       padding-top: 30px;
-      margin: 0 5rem;
+      margin: 0 3rem;
       box-shadow: 0 0 1rem 0.5rem #161b2234;
       background: #fff;
+
+      &:nth-child(1) {
+        margin-left: 6rem;
+      }
+
+      &:last-child {
+        margin-right: 6rem;
+      }
     }
 
     &_content {
@@ -27,6 +35,7 @@
       width: calc(100% - 60px); // 30px padding-top * 2
       height: 80%;
       background: black;
+      overflow: hidden;
     }
 
     &_text {

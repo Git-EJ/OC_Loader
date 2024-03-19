@@ -5,6 +5,7 @@ import LsSportsee from "./loader/sportsee/Ls_sportsee";
 import LsHrnet from "./loader/hrnet/Ls_hrnet";
 import Header from "./components/Header";
 import MainCards from "./components/Main";
+import LsGameOn from "./loader/gameOn/Ls_gameon";
 
 
 function App() {
@@ -37,9 +38,10 @@ function App() {
    * Data for the main section (cards)
    */
   const cardsData = [
+    { id: "#04", name: "GameOn", component: <LsGameOn /> },
     { id: "#03", name: "ohMyFood", component: <LsOhMyFood /> },
-    { id: "#14", name: "HrNet", component: <LsHrnet /> },
     { id: "#12", name: "Sportsee", component: <LsSportsee /> },
+    { id: "#14", name: "HrNet", component: <LsHrnet /> },
     { id: "#11", name: "Kasa", component: <LsKasa /> },
   ];
 
