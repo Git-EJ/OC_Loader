@@ -1,0 +1,31 @@
+<svg width='60' height='60' xmlns='http://www.w3.org/2000/svg' style='opacity: 1;'>
+  <defs>
+    <filter id='neon1' x='-100%' y='-100%' width='400%' height='400%'>
+      <feFlood flood-color='#e70cdc' result='color' />
+      <feComposite in='color' in2='SourceGraphic' operator='in' result='color' />
+      <feGaussianBlur in='color' stdDeviation='6' result='blur' />
+      <feMerge>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='SourceGraphic' />
+      </feMerge>
+    </filter>
+    <filter id='neon2' x='-100%' y='-100%' width='600%' height='400%'>
+      <feFlood flood-color='#09b9ff' result='color' />
+      <feComposite in='color' in2='SourceGraphic' operator='in' result='color' />
+      <feGaussianBlur in='color' stdDeviation='4' result='blur' />
+      <feMerge>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='blur'/>
+        <feMergeNode in='SourceGraphic' />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx='15' cy='15' r='4' fill='#e70cdc' filter='url(#neon1)'></circle>
+  <circle cx='45' cy='15' r='4' fill='#09b9ff' filter='url(#neon2)'></circle>
+  <circle cx='15' cy='45' r='4' fill='#09b9ff' filter='url(#neon2)'></circle>
+  <circle cx='45' cy='45' r='4' fill='#e70cdc' filter='url(#neon1)'></circle>
+</svg>
