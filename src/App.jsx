@@ -4,7 +4,7 @@ import LsKasa from "./loader/kasa/Ls_kasa";
 import LsSportsee from "./loader/sportsee/Ls_sportsee";
 import LsHrnet from "./loader/hrnet/Ls_hrnet";
 import Header from "./components/Header";
-import MainCards from "./components/Main";
+import Cards from "./components/Cards";
 import LsGameOn from "./loader/gameOn/Ls_gameon";
 
 
@@ -17,7 +17,9 @@ function App() {
     const handleWheel = (e) => {
       const deltaX = e.deltaY * 0.8; 
       e.preventDefault();
+      e.stopPropagation();
       window.scrollBy({ left: deltaX, behavior: 'auto' });
+      return null;
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -49,11 +51,14 @@ function App() {
   return (
     <>
       <header className="header">
-        <Header arrayOfText={arrayOfText} flickerLetters={flickerLetters}  /> 
+        <Header arrayOfText={arrayOfText} flickerLetters={flickerLetters}  />
+        <div className="scroll-down-arrow"></div>
       </header>
       
       <main className="main_wrapper">
-        <MainCards cardsData={cardsData} />
+        {/* <div className="cards_container"> TODO scroll auto X */}
+          <Cards cardsData={cardsData} />
+        {/* </div> */}
       </main>
     </>
   )

@@ -36,32 +36,59 @@
 
 
     &_center {
-      text-shadow: 
-      0 0 5px $tertiary-color,        
-      0 0 10px $tertiary-color,
-      0 0 20px $tertiary-color,
-      0 0 40px $tertiary-color,
-      0 0 60px $tertiary-color,
+      @include letter_neon-effect($tertiary-color)
     }
 
     &_left {
       color: $primary-color;
-      text-shadow:
-      0 0 5px $primary-color,
-      0 0 10px $primary-color,
-      0 0 20px $primary-color,
-      0 0 40px $primary-color,
-      0 0 60px $primary-color; 
+      @include letter_neon-effect($primary-color)
     }
 
     &_right {
       color: $secondary-color;
-      text-shadow:
-      0 0 5px $secondary-color,
-      0 0 10px $secondary-color, 
-      0 0 20px $secondary-color,
-      0 0 40px $secondary-color,
-      0 0 60px $secondary-color; 
+      @include letter_neon-effect($secondary-color)
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .header {
+    @include flex_center;
+    width: 100vw;
+    height: 100vh;
+    position:relative;
+  }
+
+  .scroll-down-arrow {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -15px; // Offset by half of its width to center it
+    clip-path: polygon(50% 100%, 0 0, 100% 0); // Arrow shape
+    animation: bounce 1.5s ease-in-out infinite;
+    background: $primary-color;
+    box-shadow:
+    0 0 10px $primary-color,
+    0 0 20px $primary-color,
+    0 0 30px $primary-color,
+    0 0 40px $primary-color,
+    0 0 50px $primary-color,
+    0 0 60px $primary-color,
+    0 0 70px $primary-color;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-17px);
+    }
+    60% {
+      transform: translateY(-10px);
     }
   }
 }

@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 
-const MainCards = ({cardsData}) => {
+const Cards = ({cardsData}) => {
 
   return (
     <>
       {cardsData.map((card, i) => (
-        <div key={i} className="main_card_container">
-          <div className="main_card_content">
+        <div key={i} className="card_container">
+          <div className="card_content">
             {card.component}
           </div>
-          <div className="main_card_text">
+          <div className="card_text">
             <p>{card.id}</p>
             <p>{card.name}</p>
           </div>
@@ -19,8 +19,8 @@ const MainCards = ({cardsData}) => {
   );
 };
 
-export default MainCards;
+export default Cards;
 
-MainCards.propTypes = {
+Cards.propTypes = {
   cardsData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

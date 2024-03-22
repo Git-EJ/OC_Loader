@@ -96,6 +96,49 @@ $letters-color: #fff;
     color: $letters-color;
     letter-spacing: 2em;
   }
+
+  &_letter {
+    &:last-child {
+      letter-spacing: 0;
+    }
+  }
 } 
 
+
+@media screen and (max-width: 600px) {
+  
+  $width: 60px;
+  $height: $width/2;
+
+  .pacman {
+
+    &_m8 {
+      &:before, 
+      &:after {
+        width: $width;
+        height: $height;
+        margin-left: - $width/2;
+        margin-top: - $height;
+        border-radius: $height $height 0 0;
+      }
+  
+      &:after {
+        margin-top: 0px;
+        border-radius: 0 0 $height $height;
+      }
+    }
+
+    &_letters {
+      font-size: 1.1rem;
+      letter-spacing: 1em;
+    }
+  }
+
+  @for $i from 1 through 7 {
+    .pacman_letter:nth-child(#{$i}) {
+      @include use_animation(changeColor, $pacman-translate-time);
+      animation-delay: ($i - 1) * 0.25s;
+    }
+  }
+}
 
